@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Intake - Tu Cartografía</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #1a1c24;
+            color: #d4c5a9;
+            line-height: 1.6;
+        }
+        .container { max-width: 700px; margin: 0 auto; padding: 60px 40px; }
+        h1 { font-family: 'JetBrains Mono', monospace; font-size: 20px; color: #c87941; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .subtitle { font-size: 13px; color: #8a6c5a; margin-bottom: 40px; }
+        .form-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #8a6c5a; }
+        .section-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #c87941; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 15px; font-size: 14px; }
+        label strong { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], input[type="date"], input[type="time"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            background-color: #252731;
+            border: 1px solid #8a6c5a;
+            color: #d4c5a9;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        textarea { resize: vertical; min-height: 80px; }
+        .radio-group, .checkbox-group { margin-bottom: 15px; }
+        .radio-group label, .checkbox-group label { margin-bottom: 8px; display: flex; align-items: center; }
+        input[type="radio"], input[type="checkbox"] { margin-right: 8px; }
+        .scale-input { display: flex; gap: 5px; }
+        .scale-input label { margin: 0; }
+        .scale-input input[type="radio"] { width: auto; }
+        .helper-text { font-size: 12px; color: #8a6c5a; margin-top: 3px; }
+        .hidden { display: none; }
+        .privacy-check { margin: 30px 0; }
+        .button-group { margin-top: 40px; text-align: center; }
+        button {
+            background-color: #c87941;
+            color: #1a1c24;
+            padding: 15px 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover { background-color: #d99650; }
+        .error { color: #ff2828; font-size: 12px; margin-top: 5px; }
+        .success { color: #2add3c; font-size: 14px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tu Cartografía</h1>
+        <p class="subtitle">Formulario de Diagnóstico — Completa en 10-15 minutos</p>
+
+        <form id="intakeForm">
+            <!-- Sección 1: Acceso -->
+            <div class="form-section">
+                <div class="section-title">Datos de Acceso</div>
+                <label>
+                    <strong>Correo electrónico *</strong>
+                    <input type="email" name="email" required>
+                </label>
+            </div>
+
+            <!-- Sección 2: Consentimiento -->
+            <div class="form-section privacy-check">
+                <div class="section-title">Consentimiento</div>
+                <label class="checkbox-group">
+                    <input type="checkbox" name="consent_18_plus" required>
+                    <span>Confirmo que tengo 18 años o más y acepto que mis respuestas sean utilizadas de forma anónima con fines de diagnóstico de Tu Cartografía *</span>
+                </label>
+            </div>
+
+            <!-- Sección 3: Datos Natales -->
+            <div class="form-section">
+                <div class="section-title">Datos de Nacimiento</div>
+                <label>
+                    <strong>Fecha de nacimiento *</strong>
+                    <input type="date" name="birth_date" required>
+                    <div class="helper-text">Formato: DD/MM/AAAA</div>
+                </label>
+                <label>
+                    <strong>¿Conoces tu hora de nacimiento? *</strong>
+                    <div class="radio-group">
+                        <label><input type="radio" name="knows_birth_time" value="yes" required> Sí</label>
+                        <label><input type="radio" name="knows_birth_time" value="approximate"> Sí, pero es aproximada</label>
+                        <label><input type="radio" name="knows_birth_time" value="no"> No</label>
+                    </div>
+                </label>
+                <label id="birth_time_label" class="hidden">
+                    <strong>Hora de nacimiento</strong>
+                    <input type="time" name="birth_time">
+                    <div class="helper-text">Formato 24h. Ej: 14:30</div>
+                </label>
+                <label>
+                    <strong>Ciudad y país de nacimiento *</strong>
+                    <input type="text" name="birth_city_country" placeholder="Ej: Ciudad de México, México" required>
+                </label>
+            </div>
+
+            <!-- Sección 4: Contexto Laboral -->
+            <div class="form-section">
+                <div class="section-title">Contexto Laboral</div>
+                <label>
+                    <strong>Situación laboral actual *</strong>
+                    <select name="work_situation" required>
+                        <option value="">-- Selecciona --</option>
+                        <option value="employed">Empleado (trabajo para una empresa)</option>
+                        <option value="freelance">Freelance / Contratista independiente</option>
+                        <option value="entrepreneur">Emprendedor (dirijo mi propio negocio)</option>
+                        <option value="unemployed">Desempleado / En transición</option>
+                        <option value="student">Estudiante</option>
+                    </select>
+                </label>
+                <label>
+                    <strong>Cambios de trabajo en los últimos 2 años *</strong>
+                    <div class="radio-group">
+                        <label><input type="radio" name="career_changes_2yr" value="0" required> 0</label>
+                        <label><input type="radio" name="career_changes_2yr" value="1"> 1</label>
+                        <label><input type="radio" name="career_changes_2yr" value="2"> 2</label>
+                        <label><input type="radio" name="career_changes_2yr" value="3+"> 3 o más</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Nivel de productividad personal *</strong>
+                    <div class="scale-input">
+                        <label style="margin: 0;">Muy baja</label>
+                        <div class="scale-input">
+                            <label><input type="radio" name="productivity_rating" value="1" required> 1</label>
+                            <label><input type="radio" name="productivity_rating" value="2"> 2</label>
+                            <label><input type="radio" name="productivity_rating" value="3"> 3</label>
+                            <label><input type="radio" name="productivity_rating" value="4"> 4</label>
+                            <label><input type="radio" name="productivity_rating" value="5"> 5</label>
+                            <label><input type="radio" name="productivity_rating" value="6"> 6</label>
+                            <label><input type="radio" name="productivity_rating" value="7"> 7</label>
+                            <label><input type="radio" name="productivity_rating" value="8"> 8</label>
+                            <label><input type="radio" name="productivity_rating" value="9"> 9</label>
+                            <label><input type="radio" name="productivity_rating" value="10"> 10</label>
+                        </div>
+                        <label style="margin: 0;">Muy alta</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Tendencia a procrastinar *</strong>
+                    <div class="scale-input">
+                        <label style="margin: 0;">Casi nunca</label>
+                        <div class="scale-input">
+                            <label><input type="radio" name="procrastination_rating" value="1" required> 1</label>
+                            <label><input type="radio" name="procrastination_rating" value="2"> 2</label>
+                            <label><input type="radio" name="procrastination_rating" value="3"> 3</label>
+                            <label><input type="radio" name="procrastination_rating" value="4"> 4</label>
+                            <label><input type="radio" name="procrastination_rating" value="5"> 5</label>
+                            <label><input type="radio" name="procrastination_rating" value="6"> 6</label>
+                            <label><input type="radio" name="procrastination_rating" value="7"> 7</label>
+                            <label><input type="radio" name="procrastination_rating" value="8"> 8</label>
+                            <label><input type="radio" name="procrastination_rating" value="9"> 9</label>
+                            <label><input type="radio" name="procrastination_rating" value="10"> 10</label>
+                        </div>
+                        <label style="margin: 0;">Constantemente</label>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Sección 5: Satisfacción y Coherencia -->
+            <div class="form-section">
+                <div class="section-title">Satisfacción y Coherencia</div>
+                <label>
+                    <strong>Satisfacción general con tu vida *</strong>
+                    <div class="scale-input">
+                        <label style="margin: 0;">Muy baja</label>
+                        <div class="scale-input">
+                            <label><input type="radio" name="life_satisfaction_rating" value="1" required> 1</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="2"> 2</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="3"> 3</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="4"> 4</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="5"> 5</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="6"> 6</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="7"> 7</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="8"> 8</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="9"> 9</label>
+                            <label><input type="radio" name="life_satisfaction_rating" value="10"> 10</label>
+                        </div>
+                        <label style="margin: 0;">Muy alta</label>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Sección 6: Relaciones -->
+            <div class="form-section">
+                <div class="section-title">Relaciones</div>
+                <label>
+                    <strong>Estado de relaciones actual *</strong>
+                    <select name="relationship_status" required>
+                        <option value="">-- Selecciona --</option>
+                        <option value="single">Soltero/a</option>
+                        <option value="in_relationship">En una relación</option>
+                        <option value="married">Casado/a</option>
+                        <option value="divorced_separated">Divorciado/a o Separado/a</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- Sección 7: Patrones de Decisión -->
+            <div class="form-section">
+                <div class="section-title">Patrones de Decisión</div>
+                <label>
+                    <strong>Ante una decisión importante, cómo operas normalmente *</strong>
+                    <div class="radio-group">
+                        <label><input type="radio" name="decision_style" value="extensive_research" required> Recopilo información extensa antes de decidir</label>
+                        <label><input type="radio" name="decision_style" value="fast_intuition"> Decido rápido basándome en intuición</label>
+                        <label><input type="radio" name="decision_style" value="postpone"> Tiendo a posponer hasta sentirme completamente listo</label>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Sección 8: Respuesta Abierta -->
+            <div class="form-section">
+                <div class="section-title">Pregunta Abierta</div>
+                <label>
+                    <strong>Describe una situación de los últimos 2 años en la que reaccionaste de forma incoherente con quien quieres ser *</strong>
+                    <textarea name="incongruent_situation" required placeholder="Sé lo más específico que puedas..."></textarea>
+                </label>
+            </div>
+
+            <!-- Sección 9: Datos de Contacto -->
+            <div class="form-section">
+                <div class="section-title">Datos de Contacto</div>
+                <label>
+                    <strong>Nombre y apellido *</strong>
+                    <input type="text" name="full_name" required>
+                </label>
+                <label>
+                    <strong>País de residencia actual *</strong>
+                    <input type="text" name="country_residence" placeholder="México" required>
+                </label>
+            </div>
+
+            <!-- Botón Enviar -->
+            <div class="button-group">
+                <button type="submit">Enviar Formulario</button>
+            </div>
+
+            <div id="message"></div>
+        </form>
+    </div>
+
+    <script>
+        // Mostrar/ocultar campo hora de nacimiento
+        document.querySelectorAll('input[name="knows_birth_time"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const label = document.getElementById('birth_time_label');
+                if (this.value === 'yes' || this.value === 'approximate') {
+                    label.classList.remove('hidden');
+                    label.querySelector('input').required = true;
+                } else {
+                    label.classList.add('hidden');
+                    label.querySelector('input').required = false;
+                    label.querySelector('input').value = '';
+                }
+            });
+        });
+
+        // Enviar formulario a Supabase
+        document.getElementById('intakeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {
+                email: formData.get('email'),
+                consent_18_plus: formData.get('consent_18_plus') === 'on',
+                birth_date: formData.get('birth_date'),
+                knows_birth_time: formData.get('knows_birth_time'),
+                birth_time: formData.get('birth_time') || null,
+                birth_city_country: formData.get('birth_city_country'),
+                work_situation: formData.get('work_situation'),
+                career_changes_2yr: formData.get('career_changes_2yr'),
+                productivity_rating: parseInt(formData.get('productivity_rating')),
+                procrastination_rating: parseInt(formData.get('procrastination_rating')),
+                life_satisfaction_rating: parseInt(formData.get('life_satisfaction_rating')),
+                relationship_status: formData.get('relationship_status'),
+                decision_style: formData.get('decision_style'),
+                incongruent_situation: formData.get('incongruent_situation'),
+                full_name: formData.get('full_name'),
+                country_residence: formData.get('country_residence'),
+                market: 'MX'
+            };
+
+            const messageDiv = document.getElementById('message');
+            try {
+                // Aquí iría la llamada a Supabase
+                // Por ahora mostramos un mensaje de éxito
+                messageDiv.innerHTML = '<div class="success">✓ Formulario recibido. Recibirás tu informe en 24-48 horas.</div>';
+                this.reset();
+            } catch (error) {
+                messageDiv.innerHTML = '<div class="error">Error al enviar. Intenta de nuevo.</div>';
+            }
+        });
+    </script>
+</body>
+</html>

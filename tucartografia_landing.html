@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Cartografía - Diagnóstico Conductual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #1a1c24;
+            color: #d4c5a9;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            border-bottom: 2px solid #8a6c5a;
+            padding-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px;
+            color: #c87941;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: #d4c5a9;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #8a6c5a;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero {
+            background-color: #252731;
+            padding: 60px;
+            border-left: 4px solid #c87941;
+            margin-bottom: 60px;
+            border-radius: 0;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .feature {
+            padding: 30px;
+            border: 1px solid #8a6c5a;
+            background-color: #252731;
+        }
+
+        .feature-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #c87941;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            color: #d4c5a9;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #c87941;
+            color: #1a1c24;
+            padding: 18px 50px;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #d99650;
+        }
+
+        .pricing {
+            background-color: #252731;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #8a6c5a;
+            margin: 60px 0;
+        }
+
+        .price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 36px;
+            color: #c87941;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .price-desc {
+            font-size: 14px;
+            color: #8a6c5a;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid #8a6c5a;
+            font-size: 12px;
+            color: #8a6c5a;
+        }
+
+        @media (max-width: 768px) {
+            .features { grid-template-columns: 1fr; }
+            .container { padding: 30px 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tu Cartografía</h1>
+            <p class="tagline">No predice. Describe cómo operas.</p>
+            <p class="subtitle">Diagnóstico conductual basado en tu carta natal</p>
+        </header>
+
+        <div class="hero">
+            <h2>Tu estructura es medible</h2>
+            <p>Recibes un informe que describe cómo tomas decisiones, qué patrones rigen tus relaciones, y cuál es tu configuración personal ante la incertidumbre.</p>
+            <p>No es interpretación. Es análisis. Basado en datos.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-title">Patrón de decisión</div>
+                <div class="feature-text">Cómo recopilas información y cuándo operas. Dónde vacilás. Dónde aceleras sin pensar.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">Arquitectura relacional</div>
+                <div class="feature-text">Qué esperas de otros. Cómo construyes vínculos. Dónde se quiebra la coherencia.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">Fricción operativa</div>
+                <div class="feature-text">Las zonas donde la realidad no se ajusta a tu estructura. Dónde te atascas.</div>
+            </div>
+        </div>
+
+        <div class="pricing">
+            <p style="font-size: 14px; color: #8a6c5a; margin-bottom: 10px;">INFORME COMPLETO</p>
+            <div class="price">$450 MXN</div>
+            <p class="price-desc">~$22 USD | Entrega por email en 24-48 horas</p>
+        </div>
+
+        <div class="cta">
+            <button class="cta-button" onclick="window.location.href='form.html'">Comenzar diagnóstico</button>
+        </div>
+
+        <footer>
+            <p>Tu Cartografía © 2026 | <a href="#" style="color: #8a6c5a; text-decoration: none;">Política de privacidad</a></p>
+        </footer>
+    </div>
+</body>
+</html>
