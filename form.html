@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Intake - Tu Cartografía</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.0"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -257,6 +258,13 @@
     </div>
 
     <script>
+        // Configurar Supabase
+        const SUPABASE_URL = 'https://cdhgenroyocasehvlhnn.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkaGdlbnJveW9jYXNlaHZsaG5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNzI1MzYsImV4cCI6MjA4OTY0ODUzNn0.DsNz17oapkjyYi21jxIK4MjK_kVnhTwOWXujTADPrfY';
+
+        const { createClient } = window.supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
         // Mostrar/ocultar campo hora de nacimiento
         document.querySelectorAll('input[name="knows_birth_time"]').forEach(radio => {
             radio.addEventListener('change', function() {
@@ -299,12 +307,17 @@
 
             const messageDiv = document.getElementById('message');
             try {
-                // Aquí iría la llamada a Supabase
-                // Por ahora mostramos un mensaje de éxito
+                const { data: result, error } = await supabaseClient
+                    .from('intake_submissions')
+                    .insert([data]);
+
+                if (error) throw error;
+
                 messageDiv.innerHTML = '<div class="success">✓ Formulario recibido. Recibirás tu informe en 24-48 horas.</div>';
                 this.reset();
             } catch (error) {
-                messageDiv.innerHTML = '<div class="error">Error al enviar. Intenta de nuevo.</div>';
+                console.error('Error:', error);
+                messageDiv.innerHTML = '<div class="error">Error al enviar: ' + error.message + '</div>';
             }
         });
     </script>
