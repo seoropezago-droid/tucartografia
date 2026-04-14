@@ -192,8 +192,43 @@
         </div>
 
         <div class="cta">
-            <button class="cta-button" onclick="window.location.href='form.html'">Comenzar diagnóstico</button>
+            <button class="cta-button" id="checkout-btn">Comenzar diagnóstico</button>
         </div>
+
+        <script>
+            const SUPABASE_URL = 'https://cdhgenroyocasehvlhnn.supabase.co/functions/v1/create-checkout-session';
+            const PRICE_ID = 'price_1TL3oYDcg8xrGlpxPLhJVKLK';
+            const SUCCESS_URL = 'https://tucartografia.com/form.html';
+            const CANCEL_URL = 'https://tucartografia.com/';
+
+            document.getElementById('checkout-btn').addEventListener('click', async () => {
+                try {
+                    const response = await fetch(SUPABASE_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            priceId: PRICE_ID,
+                            successUrl: SUCCESS_URL,
+                            cancelUrl: CANCEL_URL,
+                        }),
+                    });
+
+                    const data = await response.json();
+
+                    if (data.url) {
+                        window.location.href = data.url;
+                    } else {
+                        alert('Error al iniciar el pago. Intenta nuevamente.');
+                        console.error('Error:', data.error);
+                    }
+                } catch (error) {
+                    alert('Error al procesar tu solicitud.');
+                    console.error('Error:', error);
+                }
+            });
+        </script>
 
         <footer>
             <p>Tu Cartografía © 2026 | <a href="#" style="color: #8a6c5a; text-decoration: none;">Política de privacidad</a></p>
