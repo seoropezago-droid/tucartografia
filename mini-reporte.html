@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Composición de Energía — Tu Cartografía</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #1a1c24;
+            color: #d4c5a9;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 700px; margin: 0 auto; padding: 60px 40px; }
+
+        /* ─── HEADER ─── */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 2px solid #8a6c5a;
+            padding-bottom: 40px;
+        }
+
+        header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22px;
+            color: #c87941;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #8a6c5a;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ─── INTRO ─── */
+        .intro {
+            margin-bottom: 40px;
+        }
+
+        .intro h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #c87941;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            color: #d4c5a9;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        /* ─── AVISO DE ENTREGA ─── */
+        .aviso-entrega {
+            background-color: #252731;
+            border-left: 3px solid #c87941;
+            padding: 16px 20px;
+            margin-bottom: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #8a6c5a;
+            letter-spacing: 0.5px;
+        }
+
+        .aviso-entrega span {
+            color: #c87941;
+        }
+
+        /* ─── FORMULARIO ─── */
+        .form-card {
+            background-color: #252731;
+            border: 1px solid #8a6c5a;
+            padding: 50px;
+        }
+
+        .form-grupo {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .form-grupo label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #8a6c5a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-grupo input {
+            background-color: #1a1c24;
+            border: 1px solid #8a6c5a;
+            color: #d4c5a9;
+            padding: 12px 16px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+            color-scheme: dark;
+            width: 100%;
+        }
+
+        .form-grupo input:focus {
+            border-color: #c87941;
+        }
+
+        .form-grupo input::placeholder {
+            color: #5a4e42;
+        }
+
+        .form-nota {
+            font-size: 12px;
+            color: #8a6c5a;
+            font-style: italic;
+        }
+
+        .form-fila {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .form-fila .form-grupo {
+            margin-bottom: 0;
+        }
+
+        /* ─── TYC ─── */
+        .tyc {
+            font-size: 13px;
+            color: #8a6c5a;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .tyc a {
+            color: #8a6c5a;
+            text-decoration: underline;
+        }
+
+        .tyc a:hover {
+            color: #c87941;
+        }
+
+        /* ─── BOTÓN ─── */
+        .btn-submit {
+            background-color: #c87941;
+            color: #1a1c24;
+            padding: 18px 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover { background-color: #d99650; }
+        .btn-submit:disabled { background-color: #5a4e42; cursor: not-allowed; }
+
+        /* ─── FEEDBACK ─── */
+        #form-feedback {
+            margin-top: 20px;
+            padding: 16px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        #form-feedback.exito {
+            border-left: 3px solid #c87941;
+            color: #c87941;
+            background-color: #1a1c24;
+        }
+
+        #form-feedback.error {
+            border-left: 3px solid #8a6c5a;
+            color: #8a6c5a;
+            background-color: #1a1c24;
+        }
+
+        /* ─── VOLVER ─── */
+        .volver {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .volver a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #8a6c5a;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .volver a:hover { color: #c87941; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #8a6c5a;
+            font-size: 12px;
+            color: #8a6c5a;
+        }
+
+        footer a { color: #8a6c5a; text-decoration: none; }
+        footer a:hover { color: #c87941; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .container { padding: 30px 20px; }
+            .form-card { padding: 30px 20px; }
+            .form-fila { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ─── HEADER ─── -->
+    <header>
+        <h1>Tu Cartografía</h1>
+        <p class="tagline">No predice. Describe cómo operas.</p>
+    </header>
+
+    <!-- ─── INTRO ─── -->
+    <div class="intro">
+        <h2>Tu composición de energía</h2>
+        <p>
+            Un análisis gratuito que describe cómo se distribuyen los cuatro elementos
+            (Fuego, Tierra, Aire, Agua) en tu configuración natal y qué modalidades
+            (Cardinal, Fijo, Mutable) dominan tu patrón operativo.
+        </p>
+        <p>
+            No es un horóscopo. No es una predicción. Es una lectura estructural
+            basada en los datos exactos de tu nacimiento.
+        </p>
+    </div>
+
+    <!-- ─── AVISO DE ENTREGA ─── -->
+    <div class="aviso-entrega">
+        TIEMPO DE ENTREGA — Tu informe llegará a tu correo en las próximas <span>24 horas</span>.
+    </div>
+
+    <!-- ─── FORMULARIO ─── -->
+    <div class="form-card">
+        <form id="form-mini-reporte" novalidate>
+
+            <div class="form-grupo">
+                <label for="email">Correo electrónico *</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+
+            <div class="form-fila">
+                <div class="form-grupo">
+                    <label for="fecha_nacimiento">Fecha de nacimiento *</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="hora_nacimiento">Hora de nacimiento *</label>
+                    <input type="time" id="hora_nacimiento" name="hora_nacimiento" required>
+                    <span class="form-nota">Si no la sabes, usa la hora aproximada.</span>
+                </div>
+            </div>
+
+            <div class="form-grupo">
+                <label for="lugar_nacimiento">Ciudad y país de nacimiento *</label>
+                <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" placeholder="Ej: Ciudad de México, México" required>
+            </div>
+
+            <p class="tyc">
+                Al enviar este formulario aceptas nuestros
+                <a href="/tyc_mx.html" target="_blank">Términos y condiciones</a>
+                y nuestra
+                <a href="/privacidad_mx.html" target="_blank">Política de privacidad</a>.
+            </p>
+
+            <button type="submit" class="btn-submit" id="btn-submit">
+                Enviar mis datos
+            </button>
+
+        </form>
+
+        <div id="form-feedback"></div>
+    </div>
+
+    <div class="volver">
+        <a href="/">← Volver al inicio</a>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <p>Tu Cartografía © 2026 &nbsp;|&nbsp;
+            <a href="/privacidad_mx.html">Política de privacidad</a> &nbsp;|&nbsp;
+            <a href="/tyc_mx.html">Términos y condiciones</a>
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    const SUPABASE_URL  = 'https://cdhgenroyocasehvlhnn.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkaGdlbnJveW9jYXNlaHZsaG5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNzI1MzYsImV4cCI6MjA4OTY0ODUzNn0.DsNz17oapkjyYi21jxIK4MjK_kVnhTwOWXujTADPrfY';
+
+    document.getElementById('form-mini-reporte').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const btn      = document.getElementById('btn-submit');
+        const feedback = document.getElementById('form-feedback');
+
+        const email  = document.getElementById('email').value.trim();
+        const fecha  = document.getElementById('fecha_nacimiento').value;
+        const hora   = document.getElementById('hora_nacimiento').value;
+        const lugar  = document.getElementById('lugar_nacimiento').value.trim();
+
+        if (!email || !fecha || !hora || !lugar) {
+            mostrarFeedback('error', 'Todos los campos son obligatorios.');
+            return;
+        }
+
+        btn.disabled    = true;
+        btn.textContent = 'Enviando...';
+        feedback.style.display = 'none';
+
+        try {
+            const res = await fetch(`${SUPABASE_URL}/functions/v1/lead-magnet`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${SUPABASE_ANON}`
+                },
+                body: JSON.stringify({
+                    email:            email,
+                    fecha_nacimiento: fecha,
+                    hora_nacimiento:  hora,
+                    lugar_nacimiento: lugar
+                })
+            });
+
+            if (res.ok) {
+                mostrarFeedback('exito', 'Recibido. Tu composición de energía llegará a tu correo en las próximas 24 horas.');
+                document.getElementById('form-mini-reporte').reset();
+            } else {
+                mostrarFeedback('error', 'Hubo un problema al procesar tu solicitud. Intenta de nuevo.');
+            }
+        } catch (err) {
+            mostrarFeedback('error', 'No se pudo conectar. Verifica tu conexión e intenta de nuevo.');
+        }
+
+        btn.disabled    = false;
+        btn.textContent = 'Enviar mis datos';
+    });
+
+    function mostrarFeedback(tipo, mensaje) {
+        const feedback = document.getElementById('form-feedback');
+        feedback.className   = tipo;
+        feedback.textContent = mensaje;
+        feedback.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
