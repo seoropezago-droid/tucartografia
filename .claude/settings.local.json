@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/sergi/OneDrive/Documents/Cartografia/CartografiaStrategy/05_Design_System/**)",
+      "Bash(npx serve *)",
+      "Read(//c/Users/sergi/AppData/Local/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/local-agent-mode-sessions/**)",
+      "Bash(xargs ls *)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\sergi\\\\OneDrive\\\\Documents\\\\Cartografia\\\\Cartografia_Web\\\\web\" | Where-Object { $_.Name -ne \"node_modules\" })",
+      "Read(//mnt/c/Users/sergi/OneDrive/Documents/Cartografia/CartografiaStrategy/**)",
+      "mcp__ide__getDiagnostics"
+    ]
+  }
+}
