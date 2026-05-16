@@ -66,7 +66,7 @@
         <p class="subtitle">Formulario de Diagnóstico — Completa en 10-15 minutos</p>
 
         <form id="intakeForm">
-            <!-- Sección 1: Acceso -->
+            <!-- Datos de Acceso -->
             <div class="form-section">
                 <div class="section-title">Datos de Acceso</div>
                 <label>
@@ -75,7 +75,7 @@
                 </label>
             </div>
 
-            <!-- Sección 2: Consentimiento -->
+            <!-- Consentimiento -->
             <div class="form-section privacy-check">
                 <div class="section-title">Consentimiento</div>
                 <label class="checkbox-group">
@@ -84,7 +84,7 @@
                 </label>
             </div>
 
-            <!-- Sección 3: Datos Natales -->
+            <!-- Datos de Nacimiento -->
             <div class="form-section">
                 <div class="section-title">Datos de Nacimiento</div>
                 <label>
@@ -111,46 +111,31 @@
                 </label>
             </div>
 
-            <!-- Sección 4: Contexto Laboral -->
+            <!-- A | Decisiones -->
             <div class="form-section">
-                <div class="section-title">Contexto Laboral</div>
+                <div class="section-title">A | Decisiones</div>
                 <label>
-                    <strong>Situación laboral actual *</strong>
-                    <select name="work_situation" required>
-                        <option value="">-- Selecciona --</option>
-                        <option value="employed">Empleado (trabajo para una empresa)</option>
-                        <option value="freelance">Freelance / Contratista independiente</option>
-                        <option value="entrepreneur">Emprendedor (dirijo mi propio negocio)</option>
-                        <option value="unemployed">Desempleado / En transición</option>
-                        <option value="student">Estudiante</option>
-                    </select>
-                </label>
-                <label>
-                    <strong>Cambios de trabajo en los últimos 2 años *</strong>
+                    <strong>Consultas externas antes de decidir *</strong>
+                    <div class="helper-text">En los últimos 2 años, ¿cuántas decisiones importantes tomaste sin consultar a nadie antes de decidir? (Considera decisiones de trabajo, dinero, relaciones o cambios de vida.)</div>
                     <div class="radio-group">
-                        <label><input type="radio" name="career_changes_2yr" value="0" required> 0</label>
-                        <label><input type="radio" name="career_changes_2yr" value="1"> 1</label>
-                        <label><input type="radio" name="career_changes_2yr" value="2"> 2</label>
-                        <label><input type="radio" name="career_changes_2yr" value="3+"> 3 o más</label>
+                        <label><input type="radio" name="a1_solo_decisions" value="0" required> 0</label>
+                        <label><input type="radio" name="a1_solo_decisions" value="1"> 1</label>
+                        <label><input type="radio" name="a1_solo_decisions" value="2"> 2</label>
+                        <label><input type="radio" name="a1_solo_decisions" value="3"> 3</label>
+                        <label><input type="radio" name="a1_solo_decisions" value="4"> 4</label>
+                        <label><input type="radio" name="a1_solo_decisions" value="5"> 5</label>
+                        <label><input type="radio" name="a1_solo_decisions" value="5+"> Más de 5</label>
                     </div>
                 </label>
                 <label>
-                    <strong>Nivel de productividad personal *</strong>
-                    <div class="scale-input">
-                        <label style="margin: 0;">Muy baja</label>
-                        <div class="scale-input">
-                            <label><input type="radio" name="productivity_rating" value="1" required> 1</label>
-                            <label><input type="radio" name="productivity_rating" value="2"> 2</label>
-                            <label><input type="radio" name="productivity_rating" value="3"> 3</label>
-                            <label><input type="radio" name="productivity_rating" value="4"> 4</label>
-                            <label><input type="radio" name="productivity_rating" value="5"> 5</label>
-                            <label><input type="radio" name="productivity_rating" value="6"> 6</label>
-                            <label><input type="radio" name="productivity_rating" value="7"> 7</label>
-                            <label><input type="radio" name="productivity_rating" value="8"> 8</label>
-                            <label><input type="radio" name="productivity_rating" value="9"> 9</label>
-                            <label><input type="radio" name="productivity_rating" value="10"> 10</label>
-                        </div>
-                        <label style="margin: 0;">Muy alta</label>
+                    <strong>Reversiones de decisión ya comunicadas *</strong>
+                    <div class="helper-text">En los últimos 2 años, ¿cuántas veces revertiste una decisión importante que ya habías comunicado a otros?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="a3_decision_reversals" value="0" required> 0</label>
+                        <label><input type="radio" name="a3_decision_reversals" value="1"> 1</label>
+                        <label><input type="radio" name="a3_decision_reversals" value="2"> 2</label>
+                        <label><input type="radio" name="a3_decision_reversals" value="3"> 3</label>
+                        <label><input type="radio" name="a3_decision_reversals" value="3+"> Más de 3</label>
                     </div>
                 </label>
                 <label>
@@ -174,7 +159,33 @@
                 </label>
             </div>
 
-            <!-- Sección 5: Satisfacción y Coherencia -->
+            <!-- B | Identidades -->
+            <div class="form-section">
+                <div class="section-title">B | Identidades</div>
+                <label>
+                    <strong>Decisiones tomadas contra opinión del entorno *</strong>
+                    <div class="helper-text">En los últimos 2 años, ¿cuántas veces tomaste una decisión importante a pesar de que las personas cercanas a ti estaban en desacuerdo?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="b1_against_social_opinion" value="0" required> 0</label>
+                        <label><input type="radio" name="b1_against_social_opinion" value="1"> 1</label>
+                        <label><input type="radio" name="b1_against_social_opinion" value="2"> 2</label>
+                        <label><input type="radio" name="b1_against_social_opinion" value="3"> 3</label>
+                        <label><input type="radio" name="b1_against_social_opinion" value="3+"> Más de 3</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Coherencia rol público / vida privada *</strong>
+                    <div class="helper-text">¿Hay aspectos de tu vida, opiniones o decisiones que mantienes activamente en privado con personas de tu entorno laboral o social (no por seguridad, sino porque prevés desaprobación o conflicto)?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="b2_public_private_coherence" value="open" required> No, soy bastante abierto en todos mis contextos</label>
+                        <label><input type="radio" name="b2_public_private_coherence" value="few_topics"> Sí, en uno o dos temas específicos</label>
+                        <label><input type="radio" name="b2_public_private_coherence" value="several_topics"> Sí, en varios temas</label>
+                        <label><input type="radio" name="b2_public_private_coherence" value="significant_gap"> Sí, hay una diferencia importante entre lo que muestro y lo que pienso o hago</label>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Satisfacción y Coherencia -->
             <div class="form-section">
                 <div class="section-title">Satisfacción y Coherencia</div>
                 <label>
@@ -198,44 +209,121 @@
                 </label>
             </div>
 
-            <!-- Sección 6: Relaciones -->
+            <!-- C | Relaciones -->
             <div class="form-section">
-                <div class="section-title">Relaciones</div>
+                <div class="section-title">C | Relaciones</div>
                 <label>
-                    <strong>Estado de relaciones actual *</strong>
-                    <select name="relationship_status" required>
-                        <option value="">-- Selecciona --</option>
-                        <option value="single">Soltero/a</option>
-                        <option value="in_relationship">En una relación</option>
-                        <option value="married">Casado/a</option>
-                        <option value="divorced_separated">Divorciado/a o Separado/a</option>
-                    </select>
-                </label>
-            </div>
-
-            <!-- Sección 7: Patrones de Decisión -->
-            <div class="form-section">
-                <div class="section-title">Patrones de Decisión</div>
-                <label>
-                    <strong>Ante una decisión importante, cómo operas normalmente *</strong>
+                    <strong>Duración promedio de relaciones significativas *</strong>
+                    <div class="helper-text">¿Cuánto tiempo duró, en promedio, tus últimas 3 relaciones de amistad o pareja que consideras significativas?</div>
                     <div class="radio-group">
-                        <label><input type="radio" name="decision_style" value="extensive_research" required> Recopilo información extensa antes de decidir</label>
-                        <label><input type="radio" name="decision_style" value="fast_intuition"> Decido rápido basándome en intuición</label>
-                        <label><input type="radio" name="decision_style" value="postpone"> Tiendo a posponer hasta sentirme completamente listo</label>
+                        <label><input type="radio" name="c1_relationship_duration" value="less_1yr" required> Menos de 1 año</label>
+                        <label><input type="radio" name="c1_relationship_duration" value="1_3yr"> 1–3 años</label>
+                        <label><input type="radio" name="c1_relationship_duration" value="3_7yr"> 3–7 años</label>
+                        <label><input type="radio" name="c1_relationship_duration" value="more_7yr"> Más de 7 años</label>
+                        <label><input type="radio" name="c1_relationship_duration" value="only_1_2"> Solo tengo 1 o 2 relaciones significativas activas</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Conflictos gestionados directamente *</strong>
+                    <div class="helper-text">En los últimos 2 años, ¿cuántas veces tuviste un conflicto con alguien cercano y lo resolviste hablando directamente con esa persona (no con un tercero)?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="c3_direct_conflict_resolution" value="0" required> 0</label>
+                        <label><input type="radio" name="c3_direct_conflict_resolution" value="1"> 1</label>
+                        <label><input type="radio" name="c3_direct_conflict_resolution" value="2"> 2</label>
+                        <label><input type="radio" name="c3_direct_conflict_resolution" value="3"> 3</label>
+                        <label><input type="radio" name="c3_direct_conflict_resolution" value="3+"> Más de 3</label>
                     </div>
                 </label>
             </div>
 
-            <!-- Sección 8: Respuesta Abierta -->
+            <!-- D | Direcciones -->
             <div class="form-section">
-                <div class="section-title">Pregunta Abierta</div>
+                <div class="section-title">D | Direcciones</div>
                 <label>
-                    <strong>Describe una situación de los últimos 2 años en la que reaccionaste de forma incoherente con quien quieres ser *</strong>
-                    <textarea name="incongruent_situation" required placeholder="Sé lo más específico que puedas..."></textarea>
+                    <strong>Cambios de trabajo o proyecto *</strong>
+                    <div class="helper-text">¿Cuántas veces cambiaste de trabajo, empresa, proyecto principal o actividad productiva en los últimos 24 meses?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="d1_work_changes" value="0" required> 0</label>
+                        <label><input type="radio" name="d1_work_changes" value="1"> 1</label>
+                        <label><input type="radio" name="d1_work_changes" value="2"> 2</label>
+                        <label><input type="radio" name="d1_work_changes" value="3"> 3</label>
+                        <label><input type="radio" name="d1_work_changes" value="3+"> Más de 3</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Tareas inconclusas activas *</strong>
+                    <div class="helper-text">Ahora mismo, ¿cuántos proyectos o tareas importantes tienes iniciados pero sin terminar?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="d3_unfinished_tasks" value="0" required> 0</label>
+                        <label><input type="radio" name="d3_unfinished_tasks" value="1"> 1</label>
+                        <label><input type="radio" name="d3_unfinished_tasks" value="2_5"> 2–5</label>
+                        <label><input type="radio" name="d3_unfinished_tasks" value="6_10"> 6–10</label>
+                        <label><input type="radio" name="d3_unfinished_tasks" value="10+"> Más de 10</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Nivel de productividad personal *</strong>
+                    <div class="scale-input">
+                        <label style="margin: 0;">Muy baja</label>
+                        <div class="scale-input">
+                            <label><input type="radio" name="productivity_rating" value="1" required> 1</label>
+                            <label><input type="radio" name="productivity_rating" value="2"> 2</label>
+                            <label><input type="radio" name="productivity_rating" value="3"> 3</label>
+                            <label><input type="radio" name="productivity_rating" value="4"> 4</label>
+                            <label><input type="radio" name="productivity_rating" value="5"> 5</label>
+                            <label><input type="radio" name="productivity_rating" value="6"> 6</label>
+                            <label><input type="radio" name="productivity_rating" value="7"> 7</label>
+                            <label><input type="radio" name="productivity_rating" value="8"> 8</label>
+                            <label><input type="radio" name="productivity_rating" value="9"> 9</label>
+                            <label><input type="radio" name="productivity_rating" value="10"> 10</label>
+                        </div>
+                        <label style="margin: 0;">Muy alta</label>
+                    </div>
                 </label>
             </div>
 
-            <!-- Sección 9: Datos de Contacto -->
+            <!-- E | Quiebres -->
+            <div class="form-section">
+                <div class="section-title">E | Quiebres</div>
+                <label>
+                    <strong>Número de crisis vividas *</strong>
+                    <div class="helper-text">¿Cuántas situaciones de crisis significativa has vivido en los últimos 5 años? Cuenta solo eventos que interrumpieron tu funcionamiento habitual (trabajo, relaciones, rutina) por al menos 1 mes. Ejemplos: pérdida de trabajo, fin de relación importante, pérdida de familiar cercano, problema de salud grave, crisis económica personal, u otros de impacto equivalente.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="e1_crisis_count" value="0" required> 0</label>
+                        <label><input type="radio" name="e1_crisis_count" value="1"> 1</label>
+                        <label><input type="radio" name="e1_crisis_count" value="2"> 2</label>
+                        <label><input type="radio" name="e1_crisis_count" value="3"> 3</label>
+                        <label><input type="radio" name="e1_crisis_count" value="3+"> Más de 3</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Año de la crisis más reciente *</strong>
+                    <div class="helper-text">¿En qué año ocurrió esa crisis?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="e2_crisis_year" value="2020" required> 2020</label>
+                        <label><input type="radio" name="e2_crisis_year" value="2021"> 2021</label>
+                        <label><input type="radio" name="e2_crisis_year" value="2022"> 2022</label>
+                        <label><input type="radio" name="e2_crisis_year" value="2023"> 2023</label>
+                        <label><input type="radio" name="e2_crisis_year" value="2024"> 2024</label>
+                        <label><input type="radio" name="e2_crisis_year" value="2025"> 2025</label>
+                        <label><input type="radio" name="e2_crisis_year" value="2026"> 2026</label>
+                    </div>
+                </label>
+                <label>
+                    <strong>Tiempo de recuperación funcional *</strong>
+                    <div class="helper-text">Pensando en la crisis más reciente que viviste: ¿cuánto tiempo pasó hasta que retomaste tu funcionamiento habitual (trabajo, relaciones, rutina)?</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="e2_recovery_time" value="less_1mo" required> Menos de 1 mes</label>
+                        <label><input type="radio" name="e2_recovery_time" value="1_3mo"> 1–3 meses</label>
+                        <label><input type="radio" name="e2_recovery_time" value="3_6mo"> 3–6 meses</label>
+                        <label><input type="radio" name="e2_recovery_time" value="6_12mo"> 6–12 meses</label>
+                        <label><input type="radio" name="e2_recovery_time" value="more_1yr"> Más de 1 año</label>
+                        <label><input type="radio" name="e2_recovery_time" value="not_yet"> Aún no lo he retomado completamente</label>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Datos de Contacto -->
             <div class="form-section">
                 <div class="section-title">Datos de Contacto</div>
                 <label>
@@ -285,24 +373,44 @@
             e.preventDefault();
 
             const formData = new FormData(this);
+            const fullName = (formData.get('full_name') || '').trim();
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0] || '';
+            const lastName = nameParts.slice(1).join(' ') || '';
+
+            const birthCityCountry = (formData.get('birth_city_country') || '').trim();
+            const cityCountryParts = birthCityCountry.split(',');
+            const birthCity = cityCountryParts[0]?.trim() || birthCityCountry;
+            const birthCountry = cityCountryParts[1]?.trim() || null;
+
             const data = {
                 email: formData.get('email'),
                 consent_18_plus: formData.get('consent_18_plus') === 'on',
                 birth_date: formData.get('birth_date'),
-                knows_birth_time: formData.get('knows_birth_time'),
+                birth_precision: formData.get('knows_birth_time'),
                 birth_time: formData.get('birth_time') || null,
-                birth_city_country: formData.get('birth_city_country'),
-                work_situation: formData.get('work_situation'),
-                career_changes_2yr: formData.get('career_changes_2yr'),
-                productivity_rating: parseInt(formData.get('productivity_rating')),
-                procrastination_rating: parseInt(formData.get('procrastination_rating')),
-                life_satisfaction_rating: parseInt(formData.get('life_satisfaction_rating')),
-                relationship_status: formData.get('relationship_status'),
-                decision_style: formData.get('decision_style'),
-                incongruent_situation: formData.get('incongruent_situation'),
-                full_name: formData.get('full_name'),
+                birth_city: birthCity,
+                birth_country: birthCountry,
+                first_name: firstName,
+                last_name: lastName,
                 country_residence: formData.get('country_residence'),
-                market: 'MX'
+                acquisition_source: 'MX',
+                form_responses: {
+                    a1_solo_decisions: formData.get('a1_solo_decisions'),
+                    a3_decision_reversals: formData.get('a3_decision_reversals'),
+                    procrastination_rating: parseInt(formData.get('procrastination_rating')),
+                    b1_against_social_opinion: formData.get('b1_against_social_opinion'),
+                    b2_public_private_coherence: formData.get('b2_public_private_coherence'),
+                    life_satisfaction_rating: parseInt(formData.get('life_satisfaction_rating')),
+                    c1_relationship_duration: formData.get('c1_relationship_duration'),
+                    c3_direct_conflict_resolution: formData.get('c3_direct_conflict_resolution'),
+                    d1_work_changes: formData.get('d1_work_changes'),
+                    d3_unfinished_tasks: formData.get('d3_unfinished_tasks'),
+                    productivity_rating: parseInt(formData.get('productivity_rating')),
+                    e1_crisis_count: formData.get('e1_crisis_count'),
+                    e2_crisis_year: formData.get('e2_crisis_year'),
+                    e2_recovery_time: formData.get('e2_recovery_time')
+                }
             };
 
             const messageDiv = document.getElementById('message');
